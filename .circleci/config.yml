@@ -17,13 +17,22 @@ jobs:
       - checkout
       - run: python test.py
 
+  deploy:
+    docker:
+      - image: cimg/python:3.11
+      
+    steps:
+      - run: echo "Practical Done"
 
 
 workflows:
-  build:
+  build_test:
     jobs:
       - build
       - test:
           requires:
             - build
+      - deploy:
+          requires:
+            - test 
 
