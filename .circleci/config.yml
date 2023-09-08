@@ -1,21 +1,22 @@
 version: 2.1
 
-job:
+jobs:
   build:
     docker:
-      - image: cimg/python:3.1
+      - image: cimg/python:3.11
 
     steps:
       - checkout
       - run: python main.py
 
-    test:
-      docker:
-        - image: cimg/python:3.11
+  test:
+    docker:
+      - image: cimg/python:3.11
 
-      steps:
-        - checkout
-        - run: python test.py
+    steps:
+      - checkout
+      - run: python test.py
+
 
 
 workflows:
